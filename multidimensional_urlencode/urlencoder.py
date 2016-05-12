@@ -20,7 +20,7 @@ def flatten(d):
 
     """
 
-    if isinstance(d, collections.Iterable) and not isinstance(d, collections.Mapping):
+    if isinstance(d, collections.Iterable) and not isinstance(d, (collections.Mapping, str, bytes, unicode)):
         return flatten({idx: val for idx, val in enumerate(d)})
     if not isinstance(d, collections.Mapping):
         return [[d]]
