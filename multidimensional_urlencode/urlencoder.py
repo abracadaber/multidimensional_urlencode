@@ -1,3 +1,4 @@
+import collections
 import urllib
 
 
@@ -19,8 +20,11 @@ def flatten(d):
 
     """
 
-    if not isinstance(d, dict):
+    if isinstance(d, collections.Iterable) and not isinstance(d, collections.Mapping):
+        return flatten({idx: val for idx, val in enumerate(d)})
+    if not isinstance(d, collections.Mapping):
         return [[d]]
+
 
     returned = []
     for key, value in d.items():
