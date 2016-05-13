@@ -21,7 +21,7 @@ def flatten(d):
     """
 
     if isinstance(d, collections.Iterable) and not isinstance(d, (collections.Mapping, str, bytes, unicode)):
-        return flatten({idx: val for idx, val in enumerate(d)})
+        return flatten(collections.OrderedDict(((idx, val) for idx, val in enumerate(d))))
     if not isinstance(d, collections.Mapping):
         return [[d]]
 
@@ -63,7 +63,7 @@ def urlencode(params):
 
     params = flatten(params)
 
-    url_params = {}
+    url_params = OrderedDict()
     for param in params:
         value = param.pop()
 
