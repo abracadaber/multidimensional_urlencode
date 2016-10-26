@@ -25,7 +25,6 @@ def flatten(d):
     if not isinstance(d, collections.Mapping):
         return [[d]]
 
-
     returned = []
     for key, value in d.items():
         # Each key, value is treated as a row.
@@ -63,7 +62,7 @@ def urlencode(params):
 
     params = flatten(params)
 
-    url_params = OrderedDict()
+    url_params = collections.OrderedDict()
     for param in params:
         value = param.pop()
 
