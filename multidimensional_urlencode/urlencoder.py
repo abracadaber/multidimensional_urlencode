@@ -1,10 +1,12 @@
 
 import sys
 import collections
-import urllib
 
 if sys.version_info >= (3,):
     unicode = str
+    from urllib.parse import urlencode as urllib_encode
+else:
+    from urllib import urlencode as urllib_encode
 
 
 def flatten(d):
@@ -77,4 +79,4 @@ def urlencode(params):
 
         url_params[name] = value
 
-    return urllib.urlencode(url_params, doseq=True)
+    return urllib_encode(url_params, doseq=True)
