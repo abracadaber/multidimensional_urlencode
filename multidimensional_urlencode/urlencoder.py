@@ -1,5 +1,10 @@
+
+import sys
 import collections
 import urllib
+
+if sys.version_info >= (3,):
+    unicode = str
 
 
 def flatten(d):
